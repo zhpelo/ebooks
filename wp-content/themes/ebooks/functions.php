@@ -62,30 +62,33 @@ add_image_size( 'cover-sm', 130, 184 );
 add_image_size( 'cover-md', 215, 302 ); 
 
 
-// function wanlimm_function(){
-// 	add_theme_page( '主题设置', 'wanlimm主题设置', 'administrator', 'ashu_slug','ssmay_function');
-// }
-// add_action('admin_menu', 'wanlimm_function');
+function wanlimm_function(){
+	add_theme_page( '主题设置', '主题高级管理', 'administrator', 'settings','ebooks_admin_settings');
+}
+add_action('admin_menu', 'wanlimm_function');
+
+function ebooks_admin_settings(){
+	echo "2222";
+}
 
 
 add_action( 'load-themes.php', 'the_table_install' );
 
 function the_table_install() {    
     global $wpdb; 
-    $table_name = isset($table_prefix) ? ($table_prefix . 'prestige') : ($wpdb->prefix . 'prestige'); //获取表前缀，并设置新表的名称 
+    $table_name = "{$wpdb->base_prefix}cli_logins"; //获取表前缀，并设置新表的名称 
+
+
     if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
-        $sql = " CREATE TABLE `" . $table_name . ("` (
-        `id` int(11) NOT NULL AUTO_INCREMENT,
-        `user_id` int(11) DEFAULT NULL COMMENT '用户id',
-        `post_id` int(11) DEFAULT NULL COMMENT '文章id',
-        `old` int(11) DEFAULT '0' COMMENT '原始声望',
-        `apply` int(11) DEFAULT NULL COMMENT '操作声望',
-        `new` int(11) DEFAULT NULL COMMENT '新声望',
-        `type` enum('register','login','publish_post','publish_course','comment','publish_question','answer_question','fabulous','cancel_fabulous','collect','cancel_collect') NOT NULL DEFAULT 'publish_post' COMMENT '类型：注册 登录 发文章 发教程 评论 提问 回答问题 被点赞 取消点赞 被收藏 取消收藏',
-        `time` datetime DEFAULT NULL COMMENT '操作时间',
-        `note` varchar(255) DEFAULT NULL COMMENT '说明备注',
-        PRIMARY KEY (`id`)
-        ) ENGINE=MyISAM DEFAULT CHARSET=") . DB_CHARSET . (" COMMENT='声望记录表';");
+		$charset_collate = $wpdb->get_charset_collate();
+        $sql = "CREATE TABLE `{$table_name}` (
+					public_key varchar(191) NOT NULL,
+					private_key varchar(191) NOT NULL,
+					user_id bigint(20) UNSIGNED NOT NULL,
+					created_at datetime NOT NULL,
+					expires_at datetime NOT NULL,
+					PRIMARY KEY  (public_key)
+				) $charset_collate;";
         require_once (ABSPATH . ("wp-admin/includes/upgrade.php"));
         dbDelta($sql);
     }
