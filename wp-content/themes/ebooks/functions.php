@@ -68,16 +68,14 @@ function wanlimm_function(){
 add_action('admin_menu', 'wanlimm_function');
 
 function ebooks_admin_settings(){
-	echo "2222";
+	echo "这是后台设置页面";
 }
-
 
 add_action( 'load-themes.php', 'the_table_install' );
 
 function the_table_install() {    
     global $wpdb; 
     $table_name = "{$wpdb->base_prefix}cli_logins"; //获取表前缀，并设置新表的名称 
-
 
     if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
 		$charset_collate = $wpdb->get_charset_collate();
