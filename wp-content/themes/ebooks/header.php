@@ -12,55 +12,7 @@
 	<!-- JavaScript Bundle with Popper -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-	<style>
-		.current-menu-item{
-			background-color: #999;
-		}
-
-		a, .nav-link {
-    color: #19537d;
-    text-decoration: none;
-}
-
-	/* 电子书详情页 start */
-.chapter-list {
-    list-style: none;
-    padding: 15px 0;
-}
-
-.chapter-list .nav-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.chapter-list .nav-item span {
-    font-style: oblique;
-    color: #838383;
-}
-
-.ebook-item-info .tags {
-    margin: 15px 0;
-    text-align: right;
-    overflow: hidden;
-}
-.ebook-item-info .tags a {
-    padding: 2px 5px;
-    margin: 5px;
-    text-decoration: none;
-    font-size: 0.9rem;
-    color: #24292e;
-    border-radius: 3px;
-    word-break: keep-all;
-    display: inline-block;
-}
-.ebook-item-info .tags a > i{
-    margin-right: 4px;
-}
-
-/* 电子书详情页 end */
-
-	</style>
+	
 </head>
 
 <body <?php body_class('bg-beige'); ?>>

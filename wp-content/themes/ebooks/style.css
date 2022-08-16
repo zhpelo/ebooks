@@ -127,3 +127,74 @@ blockquote::after {
     font-size: 2.5rem;
 	text-decoration: none;
 }
+
+.current-menu-item{
+	background-color: #999;
+}
+
+a, .nav-link {
+color: #19537d;
+text-decoration: none;
+}
+
+/* 电子书详情页 start */
+.chapter-list {
+list-style: none;
+padding: 15px 0;
+}
+
+.chapter-list .nav-item {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.chapter-list .nav-item span {
+font-style: oblique;
+color: #838383;
+}
+
+.ebook-item-info .tags {
+margin: 15px 0;
+text-align: right;
+overflow: hidden;
+}
+.ebook-item-info .tags a {
+padding: 2px 5px;
+margin: 5px;
+text-decoration: none;
+font-size: 0.9rem;
+color: #24292e;
+border-radius: 3px;
+word-break: keep-all;
+display: inline-block;
+}
+.ebook-item-info .tags a > i{
+margin-right: 4px;
+}
+
+/* 电子书详情页 end */
+
+.footer {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 10px;
+    margin-top: 30px;
+    color: #99979c;
+    text-align: left;
+}
+.bs-docs-footer-links {
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+.bs-docs-footer-links li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.bs-docs-footer-links li a {
+    font-size: 16px;
+    color: #444444;
+    font-weight: 800;
+}
