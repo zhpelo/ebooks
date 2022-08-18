@@ -1,7 +1,6 @@
 <?php
 get_header();
 ?>
-IIIIIIIII
 <main class="container-fluid container-lg">
     <div class="row">
         <div class="col-md-8">

@@ -1,1 +1,4 @@
 wp-content/uploads/
+wp-content/themes/cliper/
+*.DS_Store
+.DS_Store
