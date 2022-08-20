@@ -1,6 +1,9 @@
 <div class="wrap">
 
-    <h1 class="wp-heading-inline">新增章节</h1>
+    <h1 class="wp-heading-inline">
+        <?php echo  $chapter_id ? '编辑章节':'新增章节' ;?>
+        
+    </h1>
 
     <form action="" method="post" enctype="multipart/form-data">
         <div id="poststuff">
@@ -15,7 +18,7 @@
                     </div>
 
                     <div style="margin-top: 20px;">
-                        <?php wp_editor($chapter_id ? $chapter->chapter_content:'', "chapter_content" ,  array('wpautop' => false)); ?>
+                        <?php wp_editor($chapter_id ? wpautop( $chapter->chapter_content ) : '', "chapter_content"); ?>
                     </div>
 
                     <div class="submit">

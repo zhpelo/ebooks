@@ -20,181 +20,238 @@ This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned
 with others.
 */
-
-/*--------------------------------------------------------------
->>> TABLE OF CONTENTS:
-----------------------------------------------------------------
-
-	0. 	CSS Reset
-	1. 	Document Setup
-	2. 	Element Base
-	3. 	Helper Classes
-	4. 	Site Header
-	5. 	Menu Modal
-	6. 	Search Modal
-	7. 	Page Templates
-		a. 	Template: Cover Template
-		c. 	Template: Full Width
-	8.  Post: Archive
-	9.  Post: Single
-	10. Blocks
-	11. Entry Content
-	12. Comments
-	13. Site Pagination
-	14. Error 404
-	15. Widgets
-	16. Site Footer
-	17. Media Queries
-
------------------------------------------------------------------------------ */
-
-
-/* -------------------------------------------------------------------------- */
-
-/*	0. CSS Reset
-/* -------------------------------------------------------------------------- */
-
-
-html,
-body {
-	border: none;
-	margin: 0;
-	padding: 0;
+/* var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x); */
+:root {
+	--bs-nav-link-padding-y:0.5rem;
+	--bs-nav-link-padding-x:1rem;
 }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-address,
-big,
-cite,
-code,
-em,
-font,
-img,
-small,
-strike,
-sub,
-sup,
-li,
-ol,
-ul,
-fieldset,
-form,
-label,
-legend,
-button,
-table,
-caption,
-tr,
-th,
-td {
-	border: none;
-	font-size: inherit;
-	line-height: inherit;
-	margin: 0;
-	padding: 0;
-	text-align: inherit;
-}
-
-blockquote::before,
-blockquote::after {
-	content: "";
-}
-	
 
 /* 自定义css */
 
 .bg-olive {
-    color: #fff;
-    background-color: #5d6146;
+	color: #fff;
+	background-color: #5d6146;
 }
+
 .bg-beige {
-    color: #65645f;
-    background-color: #e1e0c7;
+	color: #65645f;
+	background-color: #e1e0c7;
 }
+
 .bg-burlywood {
-    color: #65645f;
-    background-color: #f0efe2;
+	color: #65645f;
+	background-color: #f0efe2;
 }
-.header-logo{
-	font-family: "Playfair Display", Georgia, "Times New Roman", serif /*rtl:Amiri, Georgia, "Times New Roman", serif*/;
-    font-size: 2.5rem;
+
+.btn-primary {
+    color: #fff;
+    background-color: #5e6146;
+    border-color: #5e6146;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    color: #fff;
+    background-color: #4f523b;
+    border-color: #4f523b;
+}
+
+
+.btn-primary:disabled,
+.btn-primary.disabled {
+    color: #fff;
+    background-color: #888d61;
+    border-color: #888d61;
+}
+
+.btn-outline-primary {
+    color: #5e6146;
+    border-color: #5e6146;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary.active {
+    color: #fff;
+    background-color: #5e6146;
+    border-color: #5e6146;
+}
+
+.admin-bar .sticky-top ,.admin-bar .offcanvas{
+    top: 32px !important;
+}
+.header-logo {
+	font-family: "Playfair Display", Georgia, "Times New Roman", serif
+		/*rtl:Amiri, Georgia, "Times New Roman", serif*/
+	;
+	font-size: 2.5rem;
 	text-decoration: none;
 }
-
-.current-menu-item{
-	background-color: #999;
+.menu-item {
+	padding: 4px 10px;
+}
+.current-menu-item {
+	background-color: #5d6146;
+}
+.current-menu-item a {
+    color: #fff;
 }
 
-a, .nav-link {
-color: #19537d;
-text-decoration: none;
+
+a,
+.nav-link {
+	color: #19537d;
+	text-decoration: none;
 }
 
 /* 电子书详情页 start */
 .chapter-list {
-list-style: none;
-padding: 15px 0;
+	list-style: none;
+	padding: 15px 0;
 }
 
 .chapter-list .nav-item {
-display: flex;
-justify-content: space-between;
-align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .chapter-list .nav-item span {
-font-style: oblique;
-color: #838383;
+	font-style: oblique;
+	color: #838383;
 }
 
 .ebook-item-info .tags {
-margin: 15px 0;
-text-align: right;
-overflow: hidden;
+	margin: 15px 0;
+	text-align: right;
+	overflow: hidden;
 }
+
 .ebook-item-info .tags a {
-padding: 2px 5px;
-margin: 5px;
-text-decoration: none;
-font-size: 0.9rem;
-color: #24292e;
-border-radius: 3px;
-word-break: keep-all;
-display: inline-block;
+	text-decoration: none;
+	font-size: 0.9rem;
+	word-break: keep-all;
+	display: inline-block;
 }
-.ebook-item-info .tags a > i{
-margin-right: 4px;
+
+.ebook-item-info .tags a>i {
+	margin-right: 4px;
 }
 
 /* 电子书详情页 end */
 
 .footer {
-    width: 100%;
-    padding-top: 50px;
-    padding-bottom: 10px;
-    margin-top: 30px;
-    color: #99979c;
-    text-align: left;
+	width: 100%;
+	padding-top: 50px;
+	padding-bottom: 10px;
+	margin-top: 30px;
+	color: #99979c;
+	text-align: left;
 }
+
 .bs-docs-footer-links {
-    padding-left: 0;
-    margin-bottom: 20px;
+	padding-left: 0;
+	margin-bottom: 20px;
 }
 
 .bs-docs-footer-links li {
-    display: inline-block;
-    margin-right: 10px;
+	display: inline-block;
+	margin-right: 10px;
 }
 
 .bs-docs-footer-links li a {
-    font-size: 16px;
-    color: #444444;
-    font-weight: 800;
+	font-size: 16px;
+	color: #444444;
+	font-weight: 800;
 }
+
+
+
+
+/* 电子书章节内容 start */
+.ebook-chapter-content {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    word-wrap: break-word;
+    font-family: "方正启体简体,Microsoft YaHei,微软雅黑,宋体";
+}
+
+.ebook-chapter-content p {
+    margin-bottom: 1rem;
+    /* text-indent: 2.4rem; */
+}
+
+.left-bar {
+    margin-top: 38px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.left-bar dd {
+    padding: 5px 10px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-top: none;
+    text-align: center;
+    cursor: pointer;
+    margin: 0;
+}
+
+.left-bar dd:first-child {
+    border-top: 1px solid rgba(0, 0, 0, .1);
+}
+
+.left-bar a {
+    color: #65645f;
+}
+
+.left-bar dd i {
+    display: block;
+    font-size: 24px;
+    height: 24px;
+    padding: 0;
+    margin: 0;
+}
+
+.left-bar dd span {
+    font-size: 12px;
+}
+
+/* 电子书章节内容 end */
+
+/* 电子书 列表页面 start */
+.ebook-list ul,
+.ebook-list li {
+    list-style: none;
+    padding: 0;
+}
+
+.ebook-list li {
+    margin-bottom: 1rem;
+}
+
+
+.ebook-list .l {
+    padding: 1rem;
+}
+.ebook-list .title > a {
+    color: #5c5c5c;
+}
+.ebook-list .cover {
+    width: 150px;
+    height: 211px;
+}
+.ebook-list .info {
+    margin-bottom: 0.4rem;
+}
+.ebook-list .info span{
+    color: #888;
+    font-weight: bold;
+}
+.ebook-list .summary {
+    max-height: 6.4rem;
+    line-height: 1.6rem;
+    font-size: 1rem;
+    overflow: hidden;
+    margin:0;
+}
+
+/* 电子书 列表页面 end */

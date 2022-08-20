@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.0.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-08-12 08:01:44+0000\n"
+"PO-Revision-Date: 2022-08-15 08:22:28+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -988,7 +988,7 @@ msgstr "“%1$s”脚本不应与新的小部件编辑器（%2$s 或 %3$s）一�
 
 #: wp-includes/class-wp-taxonomy.php:610
 msgid "The description is not prominent by default; however, some themes may show it."
-msgstr "默认情况下，描述不突出；但是，某些主题可能会显示它。"
+msgstr "描述默认不显示，但某些主题可能会显示。"
 
 #: wp-includes/class-wp-taxonomy.php:609
 msgid "Assign a parent term to create a hierarchy. The term Jazz, for example, would be the parent of Bebop and Big Band."

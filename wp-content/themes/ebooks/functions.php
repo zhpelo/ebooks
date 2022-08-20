@@ -17,7 +17,7 @@ remove_filter("wp_mail", "wp_staticize_emoji_for_email");
 function ebooks_register_styles()
 {
 	$theme_version = wp_get_theme()->get('Version');
-	wp_enqueue_style('style', get_stylesheet_uri(), array(), $theme_version);
+	wp_enqueue_style('style', get_stylesheet_uri(), array(), $theme_version.'222');
 }
 add_action('wp_enqueue_scripts', 'ebooks_register_styles');
 
@@ -31,11 +31,7 @@ function ebooks_menus()
 {
 
 	$locations = array(
-		'primary'  => __('Desktop Horizontal Menu', 'ebooks'),
-		'expanded' => __('Desktop Expanded Menu', 'ebooks'),
-		'mobile'   => __('Mobile Menu', 'ebooks'),
-		'footer'   => __('Footer Menu', 'ebooks'),
-		'social'   => __('Social Menu', 'ebooks'),
+		'primary'  => "主菜单",
 	);
 
 	register_nav_menus($locations);
@@ -103,7 +99,6 @@ function ebooks_create_data_table()
 
 function ebooks_init()
 {
-	ebooks_add_taxonomy();
 	ebooks_add_post_type();
 
 	add_filter('query_vars', function ($query_vars) {
@@ -125,29 +120,6 @@ add_action('template_include', function ($template) {
 	return get_template_directory() . '/chapter.php';
 });
 
-
-function ebooks_add_taxonomy()
-{
-	$labels = array(
-		'name'              => _x('书籍分类', 'taxonomy 名称'),
-		'singular_name'     => _x('书籍分类', 'taxonomy 单数名称'),
-		'search_items'      => __('搜索书籍分类'),
-		'all_items'         => __('所有书籍分类'),
-		'parent_item'       => __('该书籍分类的上级分类'),
-		'parent_item_colon' => __('该书籍分类的上级分类：'),
-		'edit_item'         => __('编辑书籍分类'),
-		'update_item'       => __('更新书籍分类'),
-		'add_new_item'      => __('添加新的书籍分类'),
-		'new_item_name'     => __('新书籍分类'),
-		'menu_name'         => __('书籍分类'),
-	);
-	$args = array(
-		'labels' => $labels,
-		'hierarchical' => true,
-		'rewrite' => array('slug' => 'bookshelf'),
-	);
-	register_taxonomy('ebook_category', 'book', $args);
-}
 
 /**
  * Register a custom post type called "book".
@@ -199,6 +171,7 @@ function ebooks_add_post_type()
 		'rewrite'            => array('slug' => 'book'),
 		//该文章类型的权限
 		'capability_type'    => 'post',
+		'taxonomies'		 => array( 'category', 'post_tag' ),
 		//是否有归档
 		'has_archive'        => true,
 		//是否水平，如果水平就是页面，否则类似文章这种可以有分类目录（需要自定义分类目录）
@@ -214,9 +187,10 @@ function ebooks_add_post_type()
 
 function ashuwp_posts_per_page($query)
 {
-	if ((is_home() || is_search()) && $query->is_main_query()) //首页或者搜索页的主循环
-		$query->set('post_type', array('post', 'book')); //只显示book自定义类型，
-	//$query->set( 'post_type', array( 'post', 'book' ) ); //主循环中显示post和book
+	//首页或者搜索页的主循环
+	if ((is_home() || is_search() || is_category() || is_tag()) && $query->is_main_query()) {
+		$query->set('post_type', array('post', 'book')); 
+	}
 	return $query;
 }
 add_action('pre_get_posts', 'ashuwp_posts_per_page');
@@ -225,7 +199,7 @@ add_action('pre_get_posts', 'ashuwp_posts_per_page');
 //添加文章列表
 function ebooks_add_chapters_column($columns)
 {
-	$columns['post_chapters'] = '高级管理';
+	$columns['post_chapters'] = '管理';
 	return $columns;
 }
 add_filter('manage_book_posts_columns', 'ebooks_add_chapters_column');
@@ -233,30 +207,25 @@ add_filter('manage_book_posts_columns', 'ebooks_add_chapters_column');
 function views_column_content($column, $post_id)
 {
 	switch ($column) {
-
-			// in this example, a Product has custom fields called 'product_number' and 'product_name'
 		case 'post_chapters':
 			echo "<a href=\"edit.php?post_type=book&page=manage-chapters&post_id={$post_id}\">章节列表</a>";
-			break;
-			// in this example, $buyer_id is post ID of another CPT called "buyer"
-		case 'product_buyer':
 			break;
 	}
 }
 add_action('manage_book_posts_custom_column', 'views_column_content', 10, 2);
 
 
-function ebooks_register_meta_boxes()
-{
-	add_meta_box('chapters', "章节列表", 'chapter_display_callback', 'book', 'side');
-}
-add_action('add_meta_boxes_book', 'ebooks_register_meta_boxes');
+// function ebooks_register_meta_boxes()
+// {
+// 	add_meta_box('chapters', "章节列表", 'chapter_display_callback', 'book', 'side');
+// }
+// add_action('add_meta_boxes_book', 'ebooks_register_meta_boxes');
 
 
-function chapter_display_callback()
-{
-	echo "这里要显示章节列表";
-}
+// function chapter_display_callback()
+// {
+// 	echo "这里要显示章节列表";
+// }
 
 
 //注册后台管理模块  
@@ -289,24 +258,24 @@ function ebooks_manage_chapters()
 	if (!isset($_GET['post_id']) || !$_GET['post_id']) {
 		die("错误！");
 	}
-
 	global $wpdb;
-
 	$post_id = (int)$_GET['post_id'];
 	$chapter_id = isset($_GET['chapter_id']) ? (int)$_GET['chapter_id'] : 0;
-
-
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-
-
 		if ($chapter_id > 0) {
+
+			// echo "<pre>";
+			// var_dump(stripslashes($_POST['chapter_content']));
+			// // var_dump(esc_html(stripslashes($_POST['chapter_content'])) );
+			// echo "</pre>";
+			// exit();
+
 			//更新章节
 			$wpdb->update(
 				$wpdb->prefix . 'chapters',
 				array(
 					'chapter_title'     => esc_sql($_POST['chapter_title']),
-					'chapter_content'   => addslashes($_POST['chapter_content']),
+					'chapter_content'   => stripslashes($_POST['chapter_content']),
 					'chapter_modified'       => current_time('mysql'),
 					'chapter_modified_gmt'       => current_time('mysql', 1),
 				),
@@ -341,11 +310,6 @@ function ebooks_manage_chapters()
 			);
 		}
 	}
-
-	// echo "<pre>";
-	// print_r($chapter);
-	// echo "</pre>";
-
 	require get_template_directory() . "/inc/admin/manage-chapters.php";
 }
 
@@ -368,3 +332,5 @@ function ebooks_get_chapters($post_id)
 	);
 	return $chapters;
 }
+
+

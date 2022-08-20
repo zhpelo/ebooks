@@ -3,7 +3,7 @@ get_header();
 ?>
 <main class="container-fluid container-lg">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="my-3 p-3 bg-burlywood rounded shadow-sm">
                 <?php if (have_posts()) {
                     $i = 0;
@@ -33,9 +33,7 @@ get_header();
                 } ?>
             </div>
         </div>
-
-
-        <div class="col-md-4">
+        <div class="col-md-3">
         <div class="my-3 p-3 bg-burlywood rounded shadow-sm">
             sss
         </div>
