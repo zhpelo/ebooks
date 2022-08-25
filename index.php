@@ -19,8 +19,8 @@ get_header();
                                 
                                 <?php the_title( '<h2 class="h3 mb-1"><a href="' . esc_url( get_permalink() ) . '">', '</a></h2>' ); ?>
                                 <div class="mb-1 text-muted">
-                                    <strong><?php the_category(' '); ?></strong>
-                                    <font style="vertical-align: inherit;">11 月 12 日</font>
+                                    <strong><?php the_category('>'); ?></strong>
+                                    <?php the_time( get_option( 'date_format' ) ); ?>
                                 </div>
                                 <?php the_excerpt(); ?>
                             </div>
