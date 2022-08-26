@@ -24,6 +24,7 @@ with others.
 :root {
 	--bs-nav-link-padding-y:0.5rem;
 	--bs-nav-link-padding-x:1rem;
+    --bs-dropdown-link-active-bg:#5d6146;
 }
 
 /* 自定义css */
@@ -196,7 +197,7 @@ a,
 }
 
 .left-bar dd:first-child {
-    border-top: 1px solid rgba(0, 0, 0, .1);
+    /* border-top: 1px solid rgba(0, 0, 0, .1); */
 }
 
 .left-bar a {

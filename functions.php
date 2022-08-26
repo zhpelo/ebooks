@@ -17,7 +17,9 @@ remove_filter("wp_mail", "wp_staticize_emoji_for_email");
 function ebooks_register_styles()
 {
 	$theme_version = wp_get_theme()->get('Version');
-	wp_enqueue_style('style', get_stylesheet_uri(), array(), $theme_version.'222');
+	wp_enqueue_style('style', get_stylesheet_uri(), array(), $theme_version);
+
+	wp_enqueue_script('ebooks', get_template_directory_uri().'/assets/js/ebooks.js', array(), $theme_version);
 }
 add_action('wp_enqueue_scripts', 'ebooks_register_styles');
 

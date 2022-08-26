@@ -1,6 +1,4 @@
-<?php
-get_header();
-?>
+<?php get_header(); ?>
 
 <main class="container-fluid container-lg">
     <div class="row mt-4">
@@ -8,8 +6,8 @@ get_header();
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                 <ol class="breadcrumb mb-2">
                     <li class="breadcrumb-item"><a href="/">首页</a></li>
-                    <li class="breadcrumb-item"><a href="/blogs/index.html">博客</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">【公版书】中国文学名著整理、方便大家分门别类有选择的阅读</li>
+                    <li class="breadcrumb-item"><?php the_category( '<li class="breadcrumb-item"><li>' ); ?></li>
+                        <li class="breadcrumb-item"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
                 </ol>
             </nav>
         </div>

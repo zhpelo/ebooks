@@ -7,6 +7,10 @@ $chapter_id = get_query_var('chapter');
 $chapter = ebooks_get_chapter($chapter_id);
 
 $chapters = ebooks_get_chapters($chapter->post_id);
+$chapter_ids = array_column($chapters, 'chapter_id');
+$current_key = array_search($chapter_id,$chapter_ids);
+$prev_id = $chapter_ids[$current_key-1];
+$next_id = $chapter_ids[$current_key+1];
 
 ?>
     <main class="container-fluid container-lg">
@@ -29,9 +33,17 @@ $chapters = ebooks_get_chapters($chapter->post_id);
                 <div class="sticky-top left-bar">
                     <dl class="bg-burlywood">
                         <dd data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"><i class="bi bi-card-list"></i><span>目录</span></dd>
-                        <dd onclick="printDOM()"><i class="bi bi-printer"></i><span>打印</span></dd><a href="/ebook/384/22775.html" id="next-chapter">
-                            <dd><i class="bi bi-caret-right-fill"></i><span>下一章</span></dd>
-                        </a>
+
+                        <dd onclick="printDOM()"><i class="bi bi-printer"></i><span>打印</span></dd>
+                        
+                        <?php
+                            if($prev_id){
+                                echo "<a href=\"/chapter/{$prev_id}\"><dd><i class=\"bi bi-caret-left-fill\"></i><span>上一章</span></dd></a>";
+                            }
+                            if($next_id){
+                                echo "<a href=\"/chapter/{$next_id}\"><dd><i class=\"bi bi-caret-right-fill\"></i><span>下一章</span></dd></a>";
+                            }
+                        ?>
                     </dl>
                 </div>
             </div>
@@ -45,14 +57,37 @@ $chapters = ebooks_get_chapters($chapter->post_id);
                 </nav>
                 <div class="p-3 bg-burlywood rounded shadow-sm">
                     <print-contents>
-                        <h1 class="h3 my-3"><?php echo $chapter->chapter_title;?></h1>
-                        <div class="d-flex flex-wrap"><span class="me-2"><i class="bi bi-book"></i><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></span><span class="me-2"><i class="bi bi-file-earmark-word"></i> 283 字 </span><span class="me-2"><i class="bi bi-clock"></i>2022-05-06</span></div>
+                        <h1 class="h3 my-3">
+                            <?php echo $chapter->chapter_title;?>
+                        </h1>
+                        <div class="d-flex flex-wrap">
+                            <span class="me-2"><i class="bi bi-book"></i><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></span>
+                            
+                            <span class="me-2"><i class="bi bi-file-earmark-word"></i> 283 字 </span>
+                            
+                            <span class="me-2"><i class="bi bi-clock"></i>2022-05-06</span></div>
                         <hr>
                         <div class="ebook-chapter-content">
                             <?php echo wpautop($chapter->chapter_content);?>
                         </div>
                     </print-contents>
-                    <div class="d-grid gap-2 d-flex justify-content-end"><button class="btn btn-primary me-md-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">目录</button><a class="btn btn-primary" href="/ebook/384/22775.html">下一章</a></div>
+                    <div class="d-grid gap-2 d-flex justify-content-end">
+                        
+                        <?php
+                            if($prev_id){
+                                echo "<a class=\"btn btn-primary me-md-2\" href=\"/chapter/{$prev_id}\">上一章</a>";
+                            }
+                        ?>
+
+                        <button class="btn btn-primary me-md-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">目录</button>
+                        
+                        <?php
+                            if($next_id){
+                                echo "<a class=\"btn btn-primary\" href=\"/chapter/{$next_id}\">下一章</a>";
+                            }
+                        ?>
+                    </div>
+                    
                 </div>
             </div>
             <div class="col-1 d-none d-lg-block" style="padding: 0;"></div>

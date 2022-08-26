@@ -1,5 +1,7 @@
 <?php get_header();
 $chapters = ebooks_get_chapters(get_the_ID());
+
+
 ?>
 <main class="container-fluid container-lg mt-4">
 
