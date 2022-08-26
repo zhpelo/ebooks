@@ -66,20 +66,9 @@ $chapters = ebooks_get_chapters(get_the_ID());
                             ?>
                         </ul>
                     </div>
-
                 </div>
             </div>
-
-
-            <div class="mb-4 p-3 bg-burlywood rounded shadow-sm">
-                <h6 class="border-bottom pb-2 mb-3">更多推荐</h6>
-                <div class="book-list-one">
-                    <div class="book-item"><a href="/ebook/73.html"><img class="book-cover" src="/uploads/book_covers/73.png" alt="淮南子" title="淮南子">
-                            <div class="book-name text-center">淮南子</div>
-                            <div class="book-author text-center">刘安</div>
-                        </a></div>
-                </div>
-            </div>
+            <?php ebooks_related_posts(['limit' => 12]); ?>
         </div>
         <div class="col-md-3">
             <div class="mb-4 p-3 bg-burlywood rounded shadow-sm sticky-top">
