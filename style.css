@@ -25,6 +25,7 @@ with others.
 	--bs-nav-link-padding-y:0.5rem;
 	--bs-nav-link-padding-x:1rem;
     --bs-dropdown-link-active-bg:#5d6146;
+    --bs-navbar-active-color:#ffffff;
 }
 
 /* 自定义css */
@@ -256,3 +257,47 @@ a,
 }
 
 /* 电子书 列表页面 end */
+
+
+
+/* Single Pagination ------------------------- */
+
+.pagination-single {
+	font-size: 1.8rem;
+	margin-top: 5rem;
+}
+
+.pagination-single-inner {
+	display: flex;
+	flex-direction: column;
+}
+
+.pagination-single hr:first-child {
+	margin: 0 0 2.8rem 0;
+}
+
+.pagination-single hr:last-child {
+	margin: 2.8rem 0 0.8rem 0;
+}
+
+.pagination-single a {
+	align-items: baseline;
+	display: flex;
+	font-weight: 600;
+	letter-spacing: -0.0275em;
+	text-decoration: none;
+	flex: 1;
+}
+
+.pagination-single a + a {
+	margin-top: 1rem;
+}
+
+.pagination-single a .arrow {
+	margin-right: 1rem;
+}
+
+.pagination-single a:focus .title,
+.pagination-single a:hover .title {
+	text-decoration: underline;
+}

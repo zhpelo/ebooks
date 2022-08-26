@@ -18,7 +18,11 @@
 	<?php wp_body_open(); ?>
 	<!-- 这是导航栏 -->
 	<div class="bg-olive">
-		<div class="text-center py-3"><a class="header-logo text-white " href="/" title="我的书店">我的书店</a></div>
+		<div class="text-center py-3">
+			<a class="header-logo text-white " href="<?php echo get_bloginfo( 'siteurl' ); ?>">
+				<?php echo get_bloginfo( 'name' ); ?>
+			</a>
+		</div>
 
 
 		<nav class="navbar navbar-expand-lg bg-burlywood p-0 m-0">

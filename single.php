@@ -1,4 +1,7 @@
-<?php get_header(); ?>
+<?php 
+get_header(); 
+$image_url = ! post_password_required() ? get_the_post_thumbnail_url( get_the_ID(), 'twentytwenty-fullscreen' ) : ''; 
+?>
 
 <main class="container-fluid container-lg">
     <div class="row mt-4">
@@ -12,9 +15,15 @@
             </nav>
         </div>
         <div class="col-md-8">
-            <img class="blogs-imgae" alt="<?php the_title(); ?>" title="<?php the_title(); ?>" src="/uploads/20220722/17dc5fbc81a4af481059f5e2dc01eb7f.jpeg" style="max-width:100%">
+            <?php if($image_url): ?>
+                <img class="blogs-imgae" 
+                    alt="<?php the_title(); ?>" 
+                    title="<?php the_title(); ?>" 
+                    src="<?php echo $image_url;?>" 
+                    style="max-width:100%">
+            <?php endif ?>
+           
 
-            <?php the_post_thumbnail(); ?>
 
             <div class="mb-4 p-4 bg-light rounded-bottom shadow-sm">
                 <h1 class="mb-4"><?php the_title(); ?></h1>
@@ -35,6 +44,8 @@
                 <div class="blog-content">
                     <?php the_content(); ?>
                 </div>
+
+                <?php get_template_part( 'template-parts/navigation' ); ?>
             </div>
             <div class="mb-4 p-4 bg-burlywood rounded shadow-sm">
                 <h6 class="border-bottom pb-2 mb-2"><b>相关推荐</b></h6>
