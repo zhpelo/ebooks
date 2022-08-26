@@ -139,6 +139,10 @@ a,
 	margin-right: 4px;
 }
 
+.bookcover{
+	max-width: 100%;
+	height: auto;
+}
 /* 电子书详情页 end */
 
 .footer {

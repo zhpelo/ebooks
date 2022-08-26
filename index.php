@@ -34,9 +34,11 @@ get_header();
             </div>
         </div>
         <div class="col-md-3">
-        <div class="my-3 p-3 bg-burlywood rounded shadow-sm">
-            sss
-        </div>
+            <div class="my-3 p-3 bg-burlywood rounded shadow-sm">
+                <?php get_sidebar(); ?>
+            </div>
+            
+
         </div>
     </div>
 
@@ -46,6 +48,12 @@ get_header();
             <h6 class="border-bottom pb-2 mb-2"><b>友情链接</b></h6>
         </div>
     <?php } ?>
+
+    <?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
+        <div id="div-id" class="div-widget-area">
+        <?php dynamic_sidebar( 'sidebar-1' ); ?>
+        </div>
+    <?php endif; ?>
 
     
 </main>

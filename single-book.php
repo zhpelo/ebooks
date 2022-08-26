@@ -10,11 +10,12 @@ $chapters = ebooks_get_chapters(get_the_ID());
             <div class="mb-4 p-3 bg-burlywood rounded shadow-sm">
                 <div class="ebook-item-info">
                     <div class="row">
+
+                    <?php if ( has_post_thumbnail() ) : ?>
                         <div class="col-md-3">
-                            <div class="cover">
-                                <?php the_post_thumbnail('cover-md'); ?>
-                            </div>
+                        <?php the_post_thumbnail('cover-md',['class'=>'bookcover']); ?>
                         </div>
+                    <?php endif; ?>
                         <div class="col-md-9">
                             <h1><?php the_title(); ?></h1>
                             <div class="meta">
