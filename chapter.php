@@ -51,7 +51,7 @@ $next_id = $chapter_ids[$current_key+1];
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">首页</a></li>
-                        <li class="breadcrumb-item"><?php the_category( '<li class="breadcrumb-item"><li>' ); ?></li>
+                        <li class="breadcrumb-item"><?php the_category( '</li><li class="breadcrumb-item">' ); ?></li>
                         <li class="breadcrumb-item"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
                     </ol>
                 </nav>
@@ -63,9 +63,12 @@ $next_id = $chapter_ids[$current_key+1];
                         <div class="d-flex flex-wrap">
                             <span class="me-2"><i class="bi bi-book"></i><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></span>
                             
-                            <span class="me-2"><i class="bi bi-file-earmark-word"></i> 283 字 </span>
+                            <span class="me-2"><i class="bi bi-file-earmark-word"></i> <?php echo word_count($chapter->chapter_content);?> 字 </span>
                             
-                            <span class="me-2"><i class="bi bi-clock"></i>2022-05-06</span></div>
+                            <span class="me-2">
+                                <i class="bi bi-clock"></i>
+                                <?php echo $chapter->chapter_modified;?>
+                            </span></div>
                         <hr>
                         <div class="ebook-chapter-content">
                             <?php echo wpautop($chapter->chapter_content);?>

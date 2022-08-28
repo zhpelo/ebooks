@@ -32,9 +32,11 @@ $chapters = ebooks_get_chapters(get_the_ID());
                             <p>最近更新：<?php the_time( get_option( 'date_format' ) ); ?></p>
 
                             <div class="d-grid gap-2 d-flex py-2">
+                                <?php if ( $chapters[0]->chapter_id ) : ?>
                                 <a class="btn btn-primary" href="/chapter/<?php echo $chapters[0]->chapter_id; ?>">
                                     <i class="bi bi-book"></i>在线阅读
                                 </a>
+                                <?php endif; ?>
                             </div>
                             <div class="tags">
                                 <?php the_tags(); ?>

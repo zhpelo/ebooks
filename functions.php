@@ -486,3 +486,35 @@ function ebooks_related_posts($args = array()) {
 
     wp_reset_postdata();
 }
+ /**
+  * 计算字数
+  * @param string $str 文字
+  * @return int
+  */
+function word_count($str){
+	//转换html实体字符
+	$str = htmlspecialchars_decode($str);
+	//清楚html代码
+	$str = strip_tags($str);
+	//清除换行符
+	$str = str_replace(PHP_EOL, '', $str);
+	//统计总字数
+	return mb_strlen($str);
+ }
+ /**
+  * 获取语义化字数
+  * @param int $strlen 数字
+  * @return string
+  */
+ function human_strlen($strlen)
+ {
+	 if($strlen >= 100000000){
+		 return number_format($strlen/100000000, 2)." 亿字";
+	 }elseif($strlen >= 10000){
+		 return number_format($strlen/10000, 2)." 万字";
+	 }elseif($strlen >= 1000){
+		 return number_format($strlen/1000, 2)." 千字";
+	 }else{
+		 return $strlen." 字";
+	 }
+ }
