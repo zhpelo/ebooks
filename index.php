@@ -2,6 +2,60 @@
 get_header();
 ?>
 <main class="container-fluid container-lg">
+
+
+<?php
+
+	$archive_title    = '';
+	$archive_subtitle = '';
+
+	if ( is_search() ) {
+		global $wp_query;
+
+		$archive_title = sprintf(
+			'%1$s %2$s',
+			'<span class="color-accent">' . __( 'Search:', 'ebooks' ) . '</span>',
+			'&ldquo;' . get_search_query() . '&rdquo;'
+		);
+
+		if ( $wp_query->found_posts ) {
+			$archive_subtitle = sprintf(
+				/* translators: %s: Number of search results. */
+				_n(
+					'We found %s result for your search.',
+					'We found %s results for your search.',
+					$wp_query->found_posts,
+					'ebooks'
+				),
+				number_format_i18n( $wp_query->found_posts )
+			);
+		} else {
+			$archive_subtitle = __( 'We could not find any results for your search. You can give it another try through the search form below.', 'ebooks' );
+		}
+	} elseif ( is_archive() && ! have_posts() ) {
+		$archive_title = __( 'Nothing Found', 'ebooks' );
+	} elseif ( ! is_home() ) {
+		$archive_title    = get_the_archive_title();
+		$archive_subtitle = get_the_archive_description();
+	}
+
+	if ( $archive_title || $archive_subtitle ) {
+		?>
+
+        <div class="row">
+            <div class="col-md-12 mt-3">
+            <?php if ( $archive_title ) { ?>
+                    <h1 class="archive-title"><?php echo wp_kses_post( $archive_title ); ?></h1>
+                <?php } ?>
+
+                <?php if ( $archive_subtitle ) { ?>
+                    <div class="archive-subtitle section-inner thin max-percentage intro-text"><?php echo wp_kses_post( wpautop( $archive_subtitle ) ); ?></div>
+                <?php } ?>
+            </div>
+        </div>
+	<?php
+	}
+?>
     <div class="row">
         <div class="col-md-9">
             <div class="my-3 p-3 bg-burlywood rounded shadow-sm">
@@ -37,26 +91,9 @@ get_header();
             <div class="my-3 p-3 bg-burlywood rounded shadow-sm">
                 <?php get_sidebar(); ?>
             </div>
-            
-
         </div>
-    </div>
-
-    <?php if(is_home()){ ?>
-        <!-- 友情链接，仅在首页显示 -->
-        <div class="my-3 p-3 bg-burlywood rounded shadow-sm">
-            <h6 class="border-bottom pb-2 mb-2"><b>友情链接</b></h6>
-        </div>
-    <?php } ?>
-
-    <?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
-        <div id="div-id" class="div-widget-area">
-        <?php dynamic_sidebar( 'sidebar-1' ); ?>
-        </div>
-    <?php endif; ?>
-
-    
+    </div>    
 </main>
-
+<?php get_template_part( 'template-parts/footer-menus-widgets' ); ?>
 <?php
 get_footer();

@@ -34,6 +34,8 @@ function ebooks_menus()
 
 	$locations = array(
 		'primary'  => "主菜单",
+		'footer'  => "底部菜单",
+		'social'  => "社交媒体",
 	);
 
 	register_nav_menus($locations);
@@ -217,19 +219,6 @@ function views_column_content($column, $post_id)
 add_action('manage_book_posts_custom_column', 'views_column_content', 10, 2);
 
 
-// function ebooks_register_meta_boxes()
-// {
-// 	add_meta_box('chapters', "章节列表", 'chapter_display_callback', 'book', 'side');
-// }
-// add_action('add_meta_boxes_book', 'ebooks_register_meta_boxes');
-
-
-// function chapter_display_callback()
-// {
-// 	echo "这里要显示章节列表";
-// }
-
-
 //注册后台管理模块  
 add_action('admin_menu', 'add_theme_options_menu');
 function add_theme_options_menu()
@@ -265,13 +254,6 @@ function ebooks_manage_chapters()
 	$chapter_id = isset($_GET['chapter_id']) ? (int)$_GET['chapter_id'] : 0;
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		if ($chapter_id > 0) {
-
-			// echo "<pre>";
-			// var_dump(stripslashes($_POST['chapter_content']));
-			// // var_dump(esc_html(stripslashes($_POST['chapter_content'])) );
-			// echo "</pre>";
-			// exit();
-
 			//更新章节
 			$wpdb->update(
 				$wpdb->prefix . 'chapters',
@@ -412,7 +394,7 @@ class bootstrap_5_wp_nav_menu_walker extends Walker_Nav_menu
   }
 }
 
-function themename_widgets_init() {
+function ebooks_widgets_init() {
     register_sidebar( array(
         'name'          => "默认侧边栏",
         'id'            => 'sidebar-1',
@@ -423,15 +405,15 @@ function themename_widgets_init() {
     ) );
  
     register_sidebar( array(
-        'name'          => "第二个侧边栏",
+        'name'          => "友情链接",
         'id'            => 'sidebar-2',
         'before_widget' => '<ul><li id="%1$s" class="widget %2$s">',
         'after_widget'  => '</li></ul>',
-        'before_title'  => '<h3 class="widget-title">',
-        'after_title'   => '</h3>',
+        'before_title'  => '<h6 class="border-bottom pb-2 mb-2"><b>',
+        'after_title'   => '</b></h6>',
     ) );
 }
-add_action( 'widgets_init', 'themename_widgets_init' );
+add_action( 'widgets_init', 'ebooks_widgets_init' );
 
 
 /**

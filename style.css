@@ -24,10 +24,12 @@ with others.
 :root {
 	--bs-nav-link-padding-y:0.5rem;
 	--bs-nav-link-padding-x:1rem;
-    --bs-dropdown-link-active-bg:#5d6146;
+    
+}
+.navbar {
+	--bs-dropdown-link-active-bg:#5d6146;
     --bs-navbar-active-color:#ffffff;
 }
-
 /* 自定义css */
 
 .bg-olive {

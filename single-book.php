@@ -41,7 +41,6 @@ $chapters = ebooks_get_chapters(get_the_ID());
                             <div class="tags">
                                 <?php the_tags(); ?>
                             </div>
-                            
                         </div>
                     </div>
                 </div>

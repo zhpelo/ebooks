@@ -31,7 +31,6 @@
                         <thead>
                             <tr>
                                 <td>章节列表</td>
-                                <!-- <td>排序</td> -->
                             </tr>  
                         </thead>
                         <tbody>
@@ -41,7 +40,6 @@
                                     <?php echo "<a href=\"edit.php?post_type=book&page=manage-chapters&post_id={$post_id}&chapter_id={$chapter->chapter_id}\">{$chapter->chapter_title}</a>"; 
                                     ?>    
                                 </td>
-                                <!-- <td><?php echo $chapter->chapter_order ?></td> -->
                             </tr>  
                             <?php } ?>
                         </tbody>
