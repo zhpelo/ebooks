@@ -80,12 +80,13 @@ get_header();
                             </div>
                             <div class="col-auto d-none d-lg-block">
                                 <?php the_post_thumbnail('cover-sm'); ?>
-
                             </div>
                         </div>
                 <?php }
                 } ?>
             </div>
+
+            <?php get_template_part( 'template-parts/pagination' ); ?>
         </div>
         <div class="col-md-3">
             <div class="my-3 p-3 bg-burlywood rounded shadow-sm">
@@ -94,6 +95,6 @@ get_header();
         </div>
     </div>    
 </main>
-<?php get_template_part( 'template-parts/footer-menus-widgets' ); ?>
-<?php
+<?php 
+get_template_part( 'template-parts/footer-menus-widgets' ); 
 get_footer();
