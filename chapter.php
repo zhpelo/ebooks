@@ -30,7 +30,7 @@ if(count($chapter_ids) > $current_key+1 ){
                 <ul style="list-style: none; padding: 0;">
                 <?php
                     foreach ($chapters as $c) {
-                        echo "<li class=\"nav-item ". ($chapter_id == $c->chapter_id ? "bg-beige" : '') ."\"><a class=\"nav-link\" href=\"/chapter/{$c->chapter_id}/\">{$c->chapter_title}</a></li>";
+                        echo "<li class=\"nav-item ". ($chapter_id == $c->chapter_id ? "bg-beige" : '') ."\"><a class=\"nav-link\" href=\"".get_chapter_url($c->chapter_id)."\">{$c->chapter_title}</a></li>";
                     }
                 ?>
                 </ul>
@@ -46,10 +46,10 @@ if(count($chapter_ids) > $current_key+1 ){
                         
                         <?php
                             if($prev_id){
-                                echo "<a href=\"/chapter/{$prev_id}\"><dd><i class=\"bi bi-caret-left-fill\"></i><span>上一章</span></dd></a>";
+                                echo "<a href=\"".get_chapter_url($prev_id)."\"><dd><i class=\"bi bi-caret-left-fill\"></i><span>上一章</span></dd></a>";
                             }
                             if($next_id){
-                                echo "<a href=\"/chapter/{$next_id}\"><dd><i class=\"bi bi-caret-right-fill\"></i><span>下一章</span></dd></a>";
+                                echo "<a href=\"".get_chapter_url($next_id)."\"><dd><i class=\"bi bi-caret-right-fill\"></i><span>下一章</span></dd></a>";
                             }
                         ?>
                     </dl>
@@ -86,15 +86,16 @@ if(count($chapter_ids) > $current_key+1 ){
                         
                         <?php
                             if($prev_id){
-                                echo "<a class=\"btn btn-primary me-md-2\" href=\"/chapter/{$prev_id}\">上一章</a>";
+                                echo "<a class=\"btn btn-primary me-md-2\" href=\"".get_chapter_url($prev_id)."\">上一章</a>";
                             }
                         ?>
 
                         <button class="btn btn-primary me-md-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">目录</button>
                         
+
                         <?php
                             if($next_id){
-                                echo "<a class=\"btn btn-primary\" href=\"/chapter/{$next_id}\">下一章</a>";
+                                echo "<a class=\"btn btn-primary\" href=\"".get_chapter_url($next_id)."\">下一章</a>";
                             }
                         ?>
                     </div>

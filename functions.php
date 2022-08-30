@@ -295,17 +295,15 @@ function ebooks_manage_chapters()
 		}
 
 		echo "<div id=\"message\" class=\"updated notice notice-success is-dismissible\"><p>数据保存成功</p></div>";
-	} else {
-		//章节列表
-		
-		if ($chapter_id > 0) {
-			//当前章节
-			$chapter = $wpdb->get_row(
-				$wpdb->prepare("SELECT * FROM {$wpdb->prefix}chapters WHERE chapter_id=%d", $chapter_id)
-			);
-		}
-	}
+	} 
+
 	$chapters = ebooks_get_chapters($post_id);
+	if ($chapter_id > 0) {
+		//当前章节
+		$chapter = $wpdb->get_row(
+			$wpdb->prepare("SELECT * FROM {$wpdb->prefix}chapters WHERE chapter_id=%d", $chapter_id)
+		);
+	}
 	
 	require get_template_directory() . "/inc/admin/manage-chapters.php";
 }
@@ -407,28 +405,22 @@ class bootstrap_5_wp_nav_menu_walker extends Walker_Nav_menu
   }
 }
 
-function ebooks_widgets_init() {
-    register_sidebar( array(
-        'name'          => "默认侧边栏",
-        'id'            => 'sidebar-1',
-        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</aside>',
-        'before_title'  => '<h1 class="widget-title">',
-        'after_title'   => '</h1>',
-    ) );
- 
-    register_sidebar( array(
-        'name'          => "友情链接",
-        'id'            => 'sidebar-2',
-        'before_widget' => '<ul><li id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</li></ul>',
-        'before_title'  => '<h6 class="border-bottom pb-2 mb-2"><b>',
-        'after_title'   => '</b></h6>',
-    ) );
+// Register Sidebars
+function custom_sidebar() {
+
+	$args = array(
+		'id'            => 'sidebar-primary',
+		'name'          => "默认侧边栏",
+		'description'   => "此侧边栏在全站显示",
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+	);
+	register_sidebar( $args );
+
 }
-add_action( 'widgets_init', 'ebooks_widgets_init' );
-
-
+add_action( 'widgets_init', 'custom_sidebar' );
 /**
  * Related posts
  * 
@@ -625,3 +617,12 @@ function ebooks_site_description( $display = true ) {
 	echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
+function get_chapter_url($chapter_id) {
+	global $wp_rewrite;
+
+	if ( ! $wp_rewrite->using_permalinks() ) {
+		return home_url( "/?chapter={$chapter_id}" );
+	}
+
+	return home_url( "/chapter/{$chapter_id}/" );
+}

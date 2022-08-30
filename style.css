@@ -60,7 +60,9 @@ with others.
     border-color: #4f523b;
 }
 
-
+ol, ul {
+    padding-left: 0;
+}
 .btn-primary:disabled,
 .btn-primary.disabled {
     color: #fff;
@@ -355,4 +357,12 @@ a,
 
 .nav-short {
 	display: none;
+}
+
+.widget h2{
+	font-size: 1.4rem;
+	padding: 0;
+	margin: 0;
+	line-height: 3rem;
+
 }

@@ -33,7 +33,7 @@ $chapters = ebooks_get_chapters(get_the_ID());
 
                             <div class="d-grid gap-2 d-flex py-2">
                                 <?php if ( isset($chapters[0]) &&  $chapters[0]->chapter_id ) : ?>
-                                <a class="btn btn-primary" href="/chapter/<?php echo $chapters[0]->chapter_id; ?>">
+                                <a class="btn btn-primary" href="<?php echo get_chapter_url($chapters[0]->chapter_id); ?>">
                                     <i class="bi bi-book"></i>在线阅读
                                 </a>
                                 <?php endif; ?>
@@ -62,7 +62,7 @@ $chapters = ebooks_get_chapters(get_the_ID());
                         <ul class="chapter-list">
                             <?php
                             foreach ($chapters as $chapter) {
-                                echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"/chapter/{$chapter->chapter_id}/\">{$chapter->chapter_title}</a><span class=\"d-none d-md-block\">2022-05-06</span></li>";
+                                echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"".get_chapter_url($chapter->chapter_id)."/\">{$chapter->chapter_title}</a><span class=\"d-none d-md-block\">2022-05-06</span></li>";
                             }
                             ?>
                         </ul>
