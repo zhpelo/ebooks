@@ -19,13 +19,9 @@
 	<!-- 这是导航栏 -->
 	<div class="bg-olive">
 		<div class="text-center py-3">
-			<a class="header-logo text-white " href="<?php echo get_bloginfo( 'siteurl' ); ?>">
-				<?php echo get_bloginfo( 'name' ); ?>
-			</a>
 			<?php
-			if ( function_exists( 'the_custom_logo' ) ) {
-				the_custom_logo();
-			}
+				ebooks_site_logo();
+				ebooks_site_description();
 			?>
 		</div>
 

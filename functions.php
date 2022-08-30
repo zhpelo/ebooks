@@ -69,8 +69,19 @@ function ebooks_after_switch_theme()
 	ebooks_create_data_table();
 	// 您需要使用after_switch_theme挂钩刷新刷新规则一次。这将确保用户激活主题后，重写规则会自动刷新。
 	flush_rewrite_rules();
+
+	//启用自定义logo
+	$defaults = array(
+        'height'      => 100,
+        'width'       => 400,
+        'flex-height' => true,
+        'flex-width'  => true,
+        'header-text' => array( 'site-title', 'site-description' ),
+    );
+    add_theme_support( 'custom-logo', $defaults );
 }
 add_action('after_switch_theme', 'ebooks_after_switch_theme');
+
 
 function ebooks_create_data_table()
 {
@@ -501,14 +512,114 @@ function word_count($str){
 	 }
  }
 
- function themename_custom_logo_setup() {
-    $defaults = array(
-        'height'      => 100,
-        'width'       => 400,
-        'flex-height' => true,
-        'flex-width'  => true,
-        'header-text' => array( 'site-title', 'site-description' ),
-    );
-    add_theme_support( 'custom-logo', $defaults );
+
+
+
+
+
+/**
+ * Displays the site logo, either text or image.
+ *
+ * @since Twenty Twenty 1.0
+ *
+ * @param array $args    Arguments for displaying the site logo either as an image or text.
+ * @param bool  $display Display or return the HTML.
+ * @return string Compiled HTML based on our arguments.
+ */
+function ebooks_site_logo( $args = array(), $display = true ) {
+	$logo       = get_custom_logo();
+	$site_title = get_bloginfo( 'name' );
+	$contents   = '';
+	$classname  = '';
+
+	$defaults = array(
+		'logo'        => '%1$s<span class="screen-reader-text">%2$s</span>',
+		'logo_class'  => 'site-logo',
+		'title'       => '<a href="%1$s">%2$s</a>',
+		'title_class' => 'site-title',
+		'home_wrap'   => '<h1 class="%1$s">%2$s</h1>',
+		'single_wrap' => '<div class="%1$s faux-heading">%2$s</div>',
+		'condition'   => ( is_front_page() || is_home() ) && ! is_page(),
+	);
+
+	$args = wp_parse_args( $args, $defaults );
+
+	/**
+	 * Filters the arguments for `ebooks_site_logo()`.
+	 *
+	 * @since Twenty Twenty 1.0
+	 *
+	 * @param array $args     Parsed arguments.
+	 * @param array $defaults Function's default arguments.
+	 */
+	$args = apply_filters( 'ebooks_site_logo_args', $args, $defaults );
+
+	if ( has_custom_logo() ) {
+		$contents  = sprintf( $args['logo'], $logo, esc_html( $site_title ) );
+		$classname = $args['logo_class'];
+	} else {
+		$contents  = sprintf( $args['title'], esc_url( get_home_url( null, '/' ) ), esc_html( $site_title ) );
+		$classname = $args['title_class'];
+	}
+
+	$wrap = $args['condition'] ? 'home_wrap' : 'single_wrap';
+
+	$html = sprintf( $args[ $wrap ], $classname, $contents );
+
+	/**
+	 * Filters the arguments for `twentytwenty_site_logo()`.
+	 *
+	 * @since Twenty Twenty 1.0
+	 *
+	 * @param string $html      Compiled HTML based on our arguments.
+	 * @param array  $args      Parsed arguments.
+	 * @param string $classname Class name based on current view, home or single.
+	 * @param string $contents  HTML for site title or logo.
+	 */
+	$html = apply_filters( 'ebooks_site_logo', $html, $args, $classname, $contents );
+
+	if ( ! $display ) {
+		return $html;
+	}
+
+	echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+
 }
-add_action( 'after_setup_theme', 'themename_custom_logo_setup' );
+
+/**
+ * Displays the site description.
+ *
+ * @since Twenty Twenty 1.0
+ *
+ * @param bool $display Display or return the HTML.
+ * @return string The HTML to display.
+ */
+function ebooks_site_description( $display = true ) {
+	$description = get_bloginfo( 'description' );
+
+	if ( ! $description ) {
+		return;
+	}
+
+	$wrapper = '<div class="site-description">%s</div><!-- .site-description -->';
+
+	$html = sprintf( $wrapper, esc_html( $description ) );
+
+	/**
+	 * Filters the HTML for the site description.
+	 *
+	 * @since Twenty Twenty 1.0
+	 *
+	 * @param string $html        The HTML to display.
+	 * @param string $description Site description via `bloginfo()`.
+	 * @param string $wrapper     The format used in case you want to reuse it in a `sprintf()`.
+	 */
+	$html = apply_filters( 'ebooks_site_description', $html, $description, $wrapper );
+
+	if ( ! $display ) {
+		return $html;
+	}
+
+	echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+}
+
