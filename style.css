@@ -162,12 +162,14 @@ a,
 .bs-docs-footer-links li {
 	display: inline-block;
 	margin-right: 10px;
+	padding: 0;
 }
 
 .bs-docs-footer-links li a {
 	font-size: 16px;
 	color: #444444;
 	font-weight: 800;
+	padding: 0;
 }
 
 

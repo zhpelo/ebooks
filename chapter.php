@@ -9,8 +9,16 @@ $chapter = ebooks_get_chapter($chapter_id);
 $chapters = ebooks_get_chapters($chapter->post_id);
 $chapter_ids = array_column($chapters, 'chapter_id');
 $current_key = array_search($chapter_id,$chapter_ids);
-$prev_id = $chapter_ids[$current_key-1];
-$next_id = $chapter_ids[$current_key+1];
+
+$prev_id = $next_id = 0;
+if($current_key >= 1){
+    $prev_id = $chapter_ids[$current_key-1];
+}
+if(count($chapter_ids) > $current_key+1 ){
+    $next_id = $chapter_ids[$current_key+1];
+}
+
+
 
 ?>
     <main class="container-fluid container-lg">

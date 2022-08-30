@@ -73,7 +73,7 @@ function ebooks_after_switch_theme()
 	//启用自定义logo
 	$defaults = array(
         'height'      => 100,
-        'width'       => 400,
+        'width'       => 300,
         'flex-height' => true,
         'flex-width'  => true,
         'header-text' => array( 'site-title', 'site-description' ),
@@ -294,10 +294,10 @@ function ebooks_manage_chapters()
 			);
 		}
 
-		die("数据保存成功");
+		echo "<div id=\"message\" class=\"updated notice notice-success is-dismissible\"><p>数据保存成功</p></div>";
 	} else {
 		//章节列表
-		$chapters = ebooks_get_chapters($post_id);
+		
 		if ($chapter_id > 0) {
 			//当前章节
 			$chapter = $wpdb->get_row(
@@ -305,6 +305,8 @@ function ebooks_manage_chapters()
 			);
 		}
 	}
+	$chapters = ebooks_get_chapters($post_id);
+	
 	require get_template_directory() . "/inc/admin/manage-chapters.php";
 }
 

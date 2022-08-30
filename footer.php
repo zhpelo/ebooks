@@ -1,10 +1,24 @@
         <footer class="footer bg-burlywood">
             <div class="container">
+
+            <?php if ( has_nav_menu( 'footer' ) ) { ?>
+
                 <ul class="bs-docs-footer-links">
-                    <li><a href="/blogs/1.html">服务协议</a></li>
-                    <li><a href="/blogs/2.html">隐私政策</a></li>
-                    <li><a href="/blogs/3.html">违规举报</a></li>
+                    <?php
+                    wp_nav_menu(
+                        array(
+                            'container'      => '',
+                            'depth'          => 1,
+                            'items_wrap'     => '%3$s',
+                            'theme_location' => 'footer',
+                        )
+                    );
+                    ?>
                 </ul>
+
+            </nav><!-- .site-nav -->
+
+            <?php } ?>
                 <p class="copyright">
                     Copyright&nbsp;©&nbsp;2021-2022 传硕公版书 
                     <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'ebooks' ) ); ?>">

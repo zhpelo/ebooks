@@ -32,7 +32,7 @@ $chapters = ebooks_get_chapters(get_the_ID());
                             <p>最近更新：<?php the_time( get_option( 'date_format' ) ); ?></p>
 
                             <div class="d-grid gap-2 d-flex py-2">
-                                <?php if ( $chapters[0]->chapter_id ) : ?>
+                                <?php if ( isset($chapters[0]) &&  $chapters[0]->chapter_id ) : ?>
                                 <a class="btn btn-primary" href="/chapter/<?php echo $chapters[0]->chapter_id; ?>">
                                     <i class="bi bi-book"></i>在线阅读
                                 </a>
@@ -72,14 +72,12 @@ $chapters = ebooks_get_chapters(get_the_ID());
             <?php ebooks_related_posts(['limit' => 12]); ?>
         </div>
         <div class="col-md-3">
-            <div class="mb-4 p-3 bg-burlywood rounded shadow-sm sticky-top">
-                <h6 class="border-bottom pb-2 mb-0">可通过以下方式联系我们</h6>
-                <ul class="mt-4">
-                    <li><a href="https://twitter.com/7sbook" target="_blank"><i class="bi bi-twitter"></i>&nbsp;传硕公版书</a></li>
-                    <li><a href="https://www.facebook.com/7sbook" target="_blank"><i class="bi bi-facebook"></i>&nbsp;传硕公版书</a></li>
-                    <li><a href="mailto:kefu@7sbook.com" target="_blank"><i class="bi bi-envelope-fill"></i>&nbsp;kefu@7sbook.com</a></li>
-                </ul>
+            <div class="my-3 p-3 bg-burlywood rounded shadow-sm">
+                <?php get_sidebar(); ?>
             </div>
+
+            <?php get_template_part( 'template-parts/social' ); ?>
+            
         </div>
     </div>
 </main>
