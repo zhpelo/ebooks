@@ -45,16 +45,42 @@ $image_url = ! post_password_required() ? get_the_post_thumbnail_url( get_the_ID
                     <?php the_content(); ?>
                 </div>
 
-                <?php get_template_part( 'template-parts/navigation' ); ?>
+               
             </div>
-            <div class="mb-4 p-4 bg-burlywood rounded shadow-sm">
-                <h6 class="border-bottom pb-2 mb-2"><b>相关推荐</b></h6>
+
+            <?php
+
+                if ( is_single() ) {
+
+                    get_template_part( 'template-parts/navigation' );
+
+                }
+
+                /*
+                * Output comments wrapper if it's a post, or if comments are open,
+                * or if there's a comment number – and check for password.
+                */
+                if ( ( is_single() || is_page() ) && ( comments_open() || get_comments_number() ) && ! post_password_required() ) {
+                    ?>
+                    <div class="my-3 p-3 bg-burlywood rounded shadow-sm">
+                    <div class="comments-wrapper section-inner">
+
+                        <?php comments_template(); ?>
+
+                    </div><!-- .comments-wrapper -->
+                    </div>
+                    <?php
+                }
                 
-            </div>
+                ebooks_related_posts(['limit' => 12]); 
+                
+            ?>
 
         </div>
         <div class="col-md-4">
-aaa
+            <div class="p-3 bg-burlywood rounded shadow-sm">
+                <?php get_sidebar(); ?>
+            </div>
         </div>
 </main>
 

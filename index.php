@@ -96,5 +96,4 @@ get_header();
     </div>    
 </main>
 <?php 
-get_template_part( 'template-parts/footer-menus-widgets' ); 
 get_footer();

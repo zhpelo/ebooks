@@ -269,8 +269,8 @@ a,
 /* Single Pagination ------------------------- */
 
 .pagination-single {
-	font-size: 1.8rem;
-	margin-top: 5rem;
+	font-size: 1.2rem;
+	/* margin-top: 5rem; */
 }
 
 .pagination-single-inner {
@@ -306,4 +306,53 @@ a,
 .pagination-single a:focus .title,
 .pagination-single a:hover .title {
 	text-decoration: underline;
+}
+
+
+
+/* -------------------------------------------------------------------------- */
+
+/*	13. Site Pagination
+/* -------------------------------------------------------------------------- */
+
+
+.pagination .nav-links {
+	align-items: baseline;
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 1.8rem;
+	font-weight: 600;
+	margin: -1.5rem 0 0 -2.5rem;
+	width: calc(100% + 2.5rem);
+}
+
+.pagination-separator {
+	margin: 5rem 0;
+}
+
+.nav-links > * {
+	margin: 1.5rem 0 0 2.5rem;
+}
+
+.nav-links .placeholder {
+	display: none;
+	visibility: hidden;
+}
+
+.pagination a {
+	text-decoration: none;
+}
+
+.pagination a:focus,
+.pagination a:hover {
+	text-decoration: underline;
+}
+
+.pagination .dots {
+	transform: translateY(-0.3em);
+	color: #6d6d6d;
+}
+
+.nav-short {
+	display: none;
 }

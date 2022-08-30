@@ -24,8 +24,6 @@ if ( $next_post || $prev_post ) {
 
 	<nav class="pagination-single section-inner<?php echo esc_attr( $pagination_classes ); ?>" aria-label="<?php esc_attr_e( 'Post', 'twentytwenty' ); ?>">
 
-		<hr class="styled-separator is-style-wide" aria-hidden="true" />
-
 		<div class="pagination-single-inner">
 
 			<?php
@@ -53,7 +51,6 @@ if ( $next_post || $prev_post ) {
 
 		</div><!-- .pagination-single-inner -->
 
-		<hr class="styled-separator is-style-wide" aria-hidden="true" />
 
 	</nav><!-- .pagination-single -->
 
