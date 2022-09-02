@@ -51,3 +51,5 @@ volumes:
   db_data: {}
 
 ```
+
+loco-translate
