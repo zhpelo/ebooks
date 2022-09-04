@@ -34,7 +34,8 @@ $chapters = ebooks_get_chapters(get_the_ID());
                             <div class="d-grid gap-2 d-flex py-2">
                                 <?php if ( isset($chapters[0]) &&  $chapters[0]->chapter_id ) : ?>
                                 <a class="btn btn-primary" href="<?php echo get_chapter_url($chapters[0]->chapter_id); ?>">
-                                    <i class="bi bi-book"></i>在线阅读
+                                    <i class="bi bi-book"></i>
+                                    <?php _e("read now","ebooks");?>
                                 </a>
                                 <?php endif; ?>
                             </div>
@@ -50,8 +51,12 @@ $chapters = ebooks_get_chapters(get_the_ID());
             <div class="mb-4 p-3 bg-burlywood rounded shadow-sm">
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">图书详情</button>
-                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">章节列表</button>
+                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                            <?php _e("Details","ebooks");?>
+                        </button>
+                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+                            <?php _e("Chapters","ebooks");?>
+                        </button>
                     </div>
                 </nav>
                 <div class="tab-content py-2" id="nav-tabContent">

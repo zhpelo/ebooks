@@ -32,6 +32,7 @@ function ebooks_menus()
 	);
 
 	register_nav_menus($locations);
+	load_theme_textdomain( 'ebooks', get_template_directory());
 }
 
 add_action('init', 'ebooks_menus');
@@ -72,6 +73,8 @@ function ebooks_after_switch_theme()
         'header-text' => array( 'site-title', 'site-description' ),
     );
     add_theme_support( 'custom-logo', $defaults );
+	//加载翻译文件
+	load_theme_textdomain( 'ebooks', get_template_directory());
 }
 add_action('after_switch_theme', 'ebooks_after_switch_theme');
 
@@ -449,3 +452,4 @@ function ebooks_related_posts($args = array()) {
 
     wp_reset_postdata();
 }
+
