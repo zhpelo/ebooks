@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ebooks\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-06 09:16+0000\n"
+"POT-Creation-Date: 2022-09-06 09:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -15,10 +15,6 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.6.2; wp-6.0.2\n"
 "X-Domain: ebooks"
-
-#: functions.php:163 functions.php:164 functions.php:165
-msgid "Add new book"
-msgstr ""
 
 #: inc/admin/manage-chapters.php:48
 msgid "add new chapter"

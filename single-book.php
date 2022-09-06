@@ -35,7 +35,7 @@ $chapters = ebooks_get_chapters(get_the_ID());
                                 <?php if ( isset($chapters[0]) &&  $chapters[0]->chapter_id ) : ?>
                                 <a class="btn btn-primary" href="<?php echo get_chapter_url($chapters[0]->chapter_id); ?>">
                                     <i class="bi bi-book"></i>
-                                    <?php _e("read now","ebooks");?>
+                                    <?php _e("Read now","ebooks");?>
                                 </a>
                                 <?php endif; ?>
                             </div>

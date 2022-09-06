@@ -1,13 +1,14 @@
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ebooks\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-02 14:06+0000\n"
-"PO-Revision-Date: 2022-09-06 09:03+0000\n"
-"Last-Translator: \n"
-"Language-Team: 简体中文\n"
-"Language: zh_CN\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"POT-Creation-Date: 2022-09-06 08:59+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,34 +18,34 @@ msgstr ""
 
 #: inc/admin/manage-chapters.php:48
 msgid "add new chapter"
-msgstr "新增章节"
+msgstr ""
 
 #: functions.php:162
 msgctxt "Add New on Toolbar"
 msgid "Book"
-msgstr "书籍"
+msgstr ""
 
 #: functions.php:161
 msgctxt "Admin Menu text"
 msgid "Books"
-msgstr "书籍"
+msgstr ""
 
 #: functions.php:238 functions.php:258 functions.php:259
 #: inc/admin/manage-chapters.php:33
 msgid "Chapter list"
-msgstr "章节列表"
+msgstr ""
 
 #: single-book.php:58
 msgid "Chapters"
-msgstr "章节"
+msgstr ""
 
 #: functions.php:131
 msgid "Default sidebar"
-msgstr "默认侧边栏"
+msgstr ""
 
 #: single-book.php:55
 msgid "Details"
-msgstr "详情"
+msgstr ""
 
 #. Name of the theme
 msgid "ebooks"
@@ -52,11 +53,11 @@ msgstr ""
 
 #: template-parts/footer-menus-widgets.php:37
 msgid "Footer"
-msgstr "页脚"
+msgstr ""
 
 #: functions.php:30
 msgid "Footer menu"
-msgstr "底部菜单"
+msgstr ""
 
 #: footer.php:23
 msgid "https://wordpress.org/"
@@ -98,7 +99,7 @@ msgstr ""
 
 #: footer.php:24
 msgid "Powered by WordPress"
-msgstr "由WordPress驱动"
+msgstr ""
 
 #: single-book.php:38
 msgid "read now"
@@ -114,7 +115,7 @@ msgstr ""
 
 #: index.php:17
 msgid "Search:"
-msgstr "搜索："
+msgstr ""
 
 #: template-parts/footer-menus-widgets.php:57
 msgid "Social links"
@@ -132,11 +133,12 @@ msgstr ""
 msgid ""
 "We could not find any results for your search. You can give it another try "
 "through the search form below."
-msgstr "我们无法为您的搜索找到任何结果。您可以通过下面的搜索表单再次尝试。"
+msgstr ""
 
 #. %s: Number of search results.
 #: index.php:24
 #, php-format
 msgid "We found %s result for your search."
 msgid_plural "We found %s results for your search."
-msgstr[0] "我们为您的搜索找到了 %s 结果。"
+msgstr[0] ""
+msgstr[1] ""

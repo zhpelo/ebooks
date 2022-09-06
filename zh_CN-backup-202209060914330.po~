@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ebooks\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-02 14:06+0000\n"
-"PO-Revision-Date: 2022-09-06 09:02+0000\n"
+"PO-Revision-Date: 2022-09-06 09:14+0000\n"
 "Last-Translator: \n"
 "Language-Team: 简体中文\n"
 "Language: zh_CN\n"
@@ -44,7 +44,7 @@ msgstr "默认侧边栏"
 
 #: single-book.php:55
 msgid "Details"
-msgstr ""
+msgstr "详情"
 
 #. Name of the theme
 msgid "ebooks"
@@ -56,7 +56,7 @@ msgstr "页脚"
 
 #: functions.php:30
 msgid "Footer menu"
-msgstr ""
+msgstr "底部菜单"
 
 #: footer.php:23
 msgid "https://wordpress.org/"
@@ -76,11 +76,11 @@ msgstr ""
 
 #: functions.php:29
 msgid "Main menu"
-msgstr ""
+msgstr "主菜单"
 
 #: index.php:36
 msgid "Nothing Found"
-msgstr ""
+msgstr "什么也没找到"
 
 #: functions.php:229
 msgid "Operate"
@@ -101,16 +101,16 @@ msgid "Powered by WordPress"
 msgstr "由WordPress驱动"
 
 #: single-book.php:38
-msgid "read now"
-msgstr ""
+msgid "Read now"
+msgstr "立即阅读"
 
 #: template-parts/related-posts.php:3
 msgid "Related Posts"
-msgstr ""
+msgstr "相关推荐"
 
 #: inc/admin/manage-chapters.php:25
 msgid "Save chapter"
-msgstr ""
+msgstr "保存章节"
 
 #: index.php:17
 msgid "Search:"
@@ -118,15 +118,15 @@ msgstr "搜索："
 
 #: template-parts/footer-menus-widgets.php:57
 msgid "Social links"
-msgstr ""
+msgstr "友情链接"
 
 #: functions.php:31
 msgid "Social menu"
-msgstr ""
+msgstr "社交媒体菜单"
 
 #. Description of the theme
 msgid "This is a wordpress theme for ebook online reading"
-msgstr ""
+msgstr "这是一个电子书在线阅读的wordpress主题"
 
 #: index.php:33
 msgid ""
