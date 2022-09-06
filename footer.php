@@ -20,7 +20,6 @@
 
             <?php } ?>
                 <p class="copyright">
-                    Copyright&nbsp;©&nbsp;2021-2022 传硕公版书 
                     <a href="<?php echo esc_url( __( 'https://wordpress.org/', 'ebooks' ) ); ?>">
 					    <?php _e( 'Powered by WordPress', 'ebooks' ); ?>
 				    </a>

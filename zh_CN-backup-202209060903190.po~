@@ -1,14 +1,13 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ebooks\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-06 08:59+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: \n"
-"Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"POT-Creation-Date: 2022-09-02 14:06+0000\n"
+"PO-Revision-Date: 2022-09-06 09:02+0000\n"
+"Last-Translator: \n"
+"Language-Team: 简体中文\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,34 +17,34 @@ msgstr ""
 
 #: inc/admin/manage-chapters.php:48
 msgid "add new chapter"
-msgstr ""
+msgstr "新增章节"
 
 #: functions.php:162
 msgctxt "Add New on Toolbar"
 msgid "Book"
-msgstr ""
+msgstr "书籍"
 
 #: functions.php:161
 msgctxt "Admin Menu text"
 msgid "Books"
-msgstr ""
+msgstr "书籍"
 
 #: functions.php:238 functions.php:258 functions.php:259
 #: inc/admin/manage-chapters.php:33
 msgid "Chapter list"
-msgstr ""
+msgstr "章节列表"
 
 #: single-book.php:58
 msgid "Chapters"
-msgstr ""
+msgstr "章节"
 
 #: functions.php:131
 msgid "Default sidebar"
-msgstr ""
+msgstr "默认侧边栏"
 
 #: single-book.php:55
 msgid "Details"
-msgstr ""
+msgstr "详情"
 
 #. Name of the theme
 msgid "ebooks"
@@ -53,7 +52,7 @@ msgstr ""
 
 #: template-parts/footer-menus-widgets.php:37
 msgid "Footer"
-msgstr ""
+msgstr "页脚"
 
 #: functions.php:30
 msgid "Footer menu"
@@ -99,7 +98,7 @@ msgstr ""
 
 #: footer.php:24
 msgid "Powered by WordPress"
-msgstr ""
+msgstr "由WordPress驱动"
 
 #: single-book.php:38
 msgid "read now"
@@ -115,7 +114,7 @@ msgstr ""
 
 #: index.php:17
 msgid "Search:"
-msgstr ""
+msgstr "搜索："
 
 #: template-parts/footer-menus-widgets.php:57
 msgid "Social links"
@@ -133,12 +132,11 @@ msgstr ""
 msgid ""
 "We could not find any results for your search. You can give it another try "
 "through the search form below."
-msgstr ""
+msgstr "我们无法为您的搜索找到任何结果。您可以通过下面的搜索表单再次尝试。"
 
 #. %s: Number of search results.
 #: index.php:24
 #, php-format
 msgid "We found %s result for your search."
 msgid_plural "We found %s results for your search."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "我们为您的搜索找到了 %s 结果。"

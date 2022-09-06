@@ -1,6 +1,6 @@
 <?php if (!empty($related_posts)) { ?>
     <div class="mb-4 p-3 bg-burlywood rounded shadow-sm">
-        <h6 class="border-bottom pb-2 mb-3"><?php _e('相关文章', 'ebooks'); ?></h6>
+        <h6 class="border-bottom pb-2 mb-3"><?php _e('Related Posts', 'ebooks'); ?></h6>
         
             <div class="row">
                 <?php

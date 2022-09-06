@@ -26,9 +26,9 @@ function ebooks_menus()
 {
 
 	$locations = array(
-		'primary'  => "主菜单",
-		'footer'  => "底部菜单",
-		'social'  => "社交媒体",
+		'primary'  => __("Main menu","ebooks"),
+		'footer'  => __("Footer menu","ebooks"),
+		'social'  => __("Social menu","ebooks"),
 	);
 
 	register_nav_menus($locations);
@@ -74,7 +74,7 @@ function ebooks_after_switch_theme()
     );
     add_theme_support( 'custom-logo', $defaults );
 	//加载翻译文件
-	load_theme_textdomain( 'ebooks', get_template_directory());
+	load_theme_ebooks( 'ebooks', get_template_directory());
 }
 add_action('after_switch_theme', 'ebooks_after_switch_theme');
 
@@ -128,8 +128,7 @@ function custom_sidebar() {
 
 	$args = array(
 		'id'            => 'sidebar-primary',
-		'name'          => "默认侧边栏",
-		'description'   => "此侧边栏在全站显示",
+		'name'          => __("Default sidebar","ebooks"),
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -157,30 +156,30 @@ add_action('template_include', function ($template) {
 function ebooks_add_post_type()
 {
 	$labels = array(
-		'name'                  => _x('书籍', 'Post type general name', 'textdomain'),
-		'singular_name'         => _x('书籍', 'Post type singular name', 'textdomain'),
-		'menu_name'             => _x('书籍', 'Admin Menu text', 'textdomain'),
-		'name_admin_bar'        => _x('书籍', 'Add New on Toolbar', 'textdomain'),
-		'add_new'               => __('添加新书籍', 'textdomain'),
-		'add_new_item'          => __('添加新书籍', 'textdomain'),
-		'new_item'              => __('添加新书籍', 'textdomain'),
-		'edit_item'             => __('编辑书籍', 'textdomain'),
-		'view_item'             => __('查看书籍', 'textdomain'),
-		'all_items'             => __('所有书籍', 'textdomain'),
-		'search_items'          => __('搜索书籍', 'textdomain'),
-		'parent_item_colon'     => __('父书籍:', 'textdomain'),
-		'not_found'             => __('未发现任何书籍.', 'textdomain'),
-		'not_found_in_trash'    => __('垃圾箱没有任何书籍.', 'textdomain'),
-		'featured_image'        => _x('书籍封面', 'Overrides the “Featured Image” phrase for this post type. Added in 4.3', 'textdomain'),
-		'set_featured_image'    => _x('设置书籍封面', 'Overrides the “Set featured image” phrase for this post type. Added in 4.3', 'textdomain'),
-		'remove_featured_image' => _x('移除书籍封面', 'Overrides the “Remove featured image” phrase for this post type. Added in 4.3', 'textdomain'),
-		'use_featured_image'    => _x('设置为封面', 'Overrides the “Use as featured image” phrase for this post type. Added in 4.3', 'textdomain'),
-		'archives'              => _x('书籍归档', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'textdomain'),
-		'insert_into_item'      => _x('插入到书籍', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'textdomain'),
-		'uploaded_to_this_item' => _x('上传该书籍', 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'textdomain'),
-		'filter_items_list'     => _x('筛选书籍', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'textdomain'),
-		'items_list_navigation' => _x('书籍导航', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'textdomain'),
-		'items_list'            => _x('书籍列表', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'textdomain'),
+		'name'                  => _x('Books', 'Post type general name', 'ebooks'),
+		'singular_name'         => _x('Book', 'Post type singular name', 'ebooks'),
+		'menu_name'             => _x('Books', 'Admin Menu text', 'ebooks'),
+		'name_admin_bar'        => _x('Book', 'Add New on Toolbar', 'ebooks'),
+		// 'add_new'               => __('Add new book', 'ebooks'),
+		// 'add_new_item'          => __('Add new book', 'ebooks'),
+		// 'new_item'              => __('Add new book', 'ebooks'),
+		// 'edit_item'             => __('编辑书籍', 'ebooks'),
+		// 'view_item'             => __('查看书籍', 'ebooks'),
+		// 'all_items'             => __('所有书籍', 'ebooks'),
+		// 'search_items'          => __('搜索书籍', 'ebooks'),
+		// 'parent_item_colon'     => __('父书籍:', 'ebooks'),
+		// 'not_found'             => __('未发现任何书籍.', 'ebooks'),
+		// 'not_found_in_trash'    => __('垃圾箱没有任何书籍.', 'ebooks'),
+		// 'featured_image'        => _x('书籍封面', 'Overrides the “Featured Image” phrase for this post type. Added in 4.3', 'ebooks'),
+		// 'set_featured_image'    => _x('设置书籍封面', 'Overrides the “Set featured image” phrase for this post type. Added in 4.3', 'ebooks'),
+		// 'remove_featured_image' => _x('移除书籍封面', 'Overrides the “Remove featured image” phrase for this post type. Added in 4.3', 'ebooks'),
+		// 'use_featured_image'    => _x('设置为封面', 'Overrides the “Use as featured image” phrase for this post type. Added in 4.3', 'ebooks'),
+		// 'archives'              => _x('书籍归档', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'ebooks'),
+		// 'insert_into_item'      => _x('插入到书籍', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'ebooks'),
+		// 'uploaded_to_this_item' => _x('上传该书籍', 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'ebooks'),
+		// 'filter_items_list'     => _x('筛选书籍', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'ebooks'),
+		// 'items_list_navigation' => _x('书籍导航', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'ebooks'),
+		// 'items_list'            => _x('书籍列表', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'ebooks'),
 	);
 
 	$args = array(
@@ -227,7 +226,7 @@ add_action('pre_get_posts', 'ashuwp_posts_per_page');
 //添加文章列表
 function ebooks_add_chapters_column($columns)
 {
-	$columns['post_chapters'] = '管理';
+	$columns['post_chapters'] = __("Operate", "ebooks");
 	return $columns;
 }
 add_filter('manage_book_posts_columns', 'ebooks_add_chapters_column');
@@ -236,7 +235,7 @@ function views_column_content($column, $post_id)
 {
 	switch ($column) {
 		case 'post_chapters':
-			echo "<a href=\"edit.php?post_type=book&page=manage-chapters&post_id={$post_id}\">章节列表</a>";
+			echo "<a href=\"edit.php?post_type=book&page=manage-chapters&post_id={$post_id}\">".__("Chapter list", "ebooks")."</a>";
 			break;
 	}
 }
@@ -255,9 +254,9 @@ function add_theme_options_menu()
 	// 	'theme_settings_admin' //调用显示内容调用的函数  
 	// );
 	add_submenu_page(
-		'edit.php?post_type=book', //页面title  
-		'章节管理', //后台菜单中显示的文字  
-		'章节管理', //选项放置的位置  
+		'edit.php?post_type=book', 
+		__("Chapter list", "ebooks"), 
+		__("Chapter list", "ebooks"),
 		'manage_options',
 		'manage-chapters', //别名，也就是在URL中GET传送的参数  
 		'ebooks_manage_chapters' //调用显示内容调用的函数  

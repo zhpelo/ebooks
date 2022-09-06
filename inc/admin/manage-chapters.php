@@ -22,7 +22,7 @@
                     </div>
 
                     <div class="submit">
-                        <input type="submit" name="save" id="publish" class="button button-primary button-large" value="保存章节">
+                        <input type="submit" name="save" id="publish" class="button button-primary button-large" value="<?php _e("Save chapter", "ebooks") ?>">
                     </div>
                 </div>
 
@@ -30,7 +30,7 @@
                     <table class="wp-list-table widefat fixed striped table-view-list posts">
                         <thead>
                             <tr>
-                                <td>章节列表</td>
+                                <td><?php _e("Chapter list", "ebooks") ?></td>
                             </tr>  
                         </thead>
                         <tbody>
@@ -45,7 +45,7 @@
                         </tbody>
                     </table>
                     <div class="submit">
-                        <a class="button button-primary button-large" href="edit.php?post_type=book&page=manage-chapters&post_id=<?php echo $post_id;?>" >新增章节</a>
+                        <a class="button button-primary button-large" href="edit.php?post_type=book&page=manage-chapters&post_id=<?php echo $post_id;?>" ><?php _e("add new chapter", "ebooks") ?></a>
                     </div>
                 </div>
             </div>
