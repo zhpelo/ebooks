@@ -74,7 +74,7 @@ function ebooks_after_switch_theme()
     );
     add_theme_support( 'custom-logo', $defaults );
 	//加载翻译文件
-	load_theme_ebooks( 'ebooks', get_template_directory());
+	load_theme_textdomain( 'ebooks', get_template_directory());
 }
 add_action('after_switch_theme', 'ebooks_after_switch_theme');
 
