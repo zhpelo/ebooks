@@ -2,6 +2,10 @@
 
 可以实现电子书在线发布和阅读功能
 
+演示网址：http://ebooks.eenot.com/
+
+![alt 这是演示截图](./screenshot.png)
+
 ```
 git clone git@github.com:eenot/ebooks.git
 
