@@ -40,7 +40,7 @@
 
 								<?php
 								if ( has_nav_menu( 'primary' ) ) {
-									echo "11111";
+								
 									wp_nav_menu(
 										array(
 											'container'  => '',

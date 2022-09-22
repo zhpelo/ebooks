@@ -606,3 +606,16 @@ body.touch-enabled .primary-menu ul li.menu-item-has-children > a {
 	padding-right: 0;
 	width: unset;
 }
+@media ( min-width: 1000px ) {
+	/* HEADER NAVIGATION */
+
+	.header-navigation-wrapper {
+		align-items: center;
+		display: flex;
+	}
+
+	.primary-menu-wrapper {
+		display: block;
+		width: 100%;
+	}
+}
