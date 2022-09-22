@@ -366,3 +366,9 @@ a,
 	line-height: 3rem;
 
 }
+
+
+.wp-block-post-comments .comment-form-author label, .wp-block-post-comments .comment-form-comment label, .wp-block-post-comments .comment-form-email label, .wp-block-post-comments .comment-form-url label {
+    display: block;
+    margin-bottom: 0.25em;
+}
