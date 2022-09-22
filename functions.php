@@ -1,8 +1,17 @@
 <?php
 
 require get_template_directory() . "/inc/template-tag.php";
+
+// Handle SVG icons.
+require get_template_directory() . '/inc/classes/class-twentytwenty-svg-icons.php';
+require get_template_directory() . '/inc/svg-icons.php';
+
+// Handle Customizer settings.
+require get_template_directory() . '/inc/classes/class-ebooks-customize.php';
+
 // Custom page walker.
 require get_template_directory() . '/inc/classes/class-ebooks-walker-page.php';
+
 
 /**
  * Register and Enqueue Styles.

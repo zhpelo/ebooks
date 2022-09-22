@@ -140,4 +140,97 @@ function ebooks_get_chapters($post_id)
 	);
 	return $chapters;
 }
+
+
+/**
+ * Filters classes of wp_list_pages items to match menu items.
+ * 过滤 wp_list_pages 项的类以匹配菜单项。
+ * Filter the class applied to wp_list_pages() items with children to match the menu class, to simplify.
+ * 过滤应用于带有子项的 wp_list_pages() 项目的类以匹配菜单类，以简化。
+ * styling of sub levels in the fallback. Only applied if the match_menu_classes argument is set.
+ * 后备中子级别的样式。仅在设置了 match_menu_classes 参数时应用。
+ *
+ * @since Twenty Twenty 1.0
+ *
+ * @param string[] $css_class    An array of CSS classes to be applied to each list item.
+ * @param WP_Post  $page         Page data object.
+ * @param int      $depth        Depth of page, used for padding.
+ * @param array    $args         An array of arguments.
+ * @param int      $current_page ID of the current page.
+ * @return array CSS class names.
+ */
+function ebooks_filter_wp_list_pages_item_classes( $css_class, $page, $depth, $args, $current_page ) {
+
+	// Only apply to wp_list_pages() calls with match_menu_classes set to true.
+	$match_menu_classes = isset( $args['match_menu_classes'] );
+
+	if ( ! $match_menu_classes ) {
+		return $css_class;
+	}
+
+	// Add current menu item class.
+	if ( in_array( 'current_page_item', $css_class, true ) ) {
+		$css_class[] = 'current-menu-item';
+	}
+
+	// Add menu item has children class.
+	if ( in_array( 'page_item_has_children', $css_class, true ) ) {
+		$css_class[] = 'menu-item-has-children';
+	}
+
+	return $css_class;
+
+}
+
+add_filter( 'page_css_class', 'ebooks_filter_wp_list_pages_item_classes', 10, 5 );
+
+
+/**
+ * Adds a Sub Nav Toggle to the Expanded Menu and Mobile Menu.
+ * 向扩展菜单和移动菜单添加子导航切换。
+ * @since Twenty Twenty 1.0
+ *
+ * @param stdClass $args  An object of wp_nav_menu() arguments.
+ * @param WP_Post  $item  Menu item data object.
+ * @param int      $depth Depth of menu item. Used for padding.
+ * @return stdClass An object of wp_nav_menu() arguments.
+ */
+function ebooks_add_sub_toggles_to_main_menu( $args, $item, $depth ) {
+
+	// Add sub menu toggles to the Expanded Menu with toggles.
+	if ( isset( $args->show_toggles ) && $args->show_toggles ) {
+
+		// Wrap the menu item link contents in a div, used for positioning.
+		$args->before = '<div class="ancestor-wrapper">';
+		$args->after  = '';
+
+		// Add a toggle to items with children.
+		if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
+
+			$toggle_target_string = '.menu-modal .menu-item-' . $item->ID . ' > .sub-menu';
+			$toggle_duration      = twentytwenty_toggle_duration();
+
+			// Add the sub menu toggle.
+			$args->after .= '<button class="toggle sub-menu-toggle fill-children-current-color" data-toggle-target="' . $toggle_target_string . '" data-toggle-type="slidetoggle" data-toggle-duration="' . absint( $toggle_duration ) . '" aria-expanded="false"><span class="screen-reader-text">' . __( 'Show sub menu', 'twentytwenty' ) . '</span>' . twentytwenty_get_theme_svg( 'chevron-down' ) . '</button>';
+
+		}
+
+		// Close the wrapper.
+		$args->after .= '</div><!-- .ancestor-wrapper -->';
+
+		// Add sub menu icons to the primary menu without toggles.
+	} elseif ( 'primary' === $args->theme_location ) {
+		if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
+			$args->after = '<span class="icon"></span>';
+		} else {
+			$args->after = '';
+		}
+	}
+
+	return $args;
+
+}
+
+add_filter( 'nav_menu_item_args', 'ebooks_add_sub_toggles_to_main_menu', 10, 3 );
+
 ?>
