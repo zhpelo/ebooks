@@ -33,16 +33,41 @@
 				</button>
 
 				<div class="collapse navbar-collapse" id="main-menu">
+
 					<?php
-					wp_nav_menu(array(
-						'theme_location' => 'primary',
-						'container' => false,
-						'menu_class' => '',
-						'fallback_cb' => '__return_false',
-						'items_wrap' => '<ul id="%1$s" class="navbar-nav me-auto mb-2 mb-md-0 %2$s">%3$s</ul>',
-						'depth' => 2,
-						'walker' => new bootstrap_5_wp_nav_menu_walker()
-					));
+						if ( has_nav_menu( 'primary2' ) ) {
+
+							wp_nav_menu(
+								array(
+									'container'  => '',
+									'items_wrap' => '%3$s',
+									'theme_location' => 'primary2',
+								)
+							);
+
+						} elseif ( ! has_nav_menu( 'expanded' ) ) {
+
+							wp_list_pages(
+								array(
+									'match_menu_classes' => true,
+									'show_sub_menu_icons' => true,
+									'title_li' => false,
+									'walker'   => new Ebooks_Walker_Page(),
+								)
+							);
+						}
+					?>
+
+					<?php
+					// wp_nav_menu(array(
+					// 	'theme_location' => 'primary',
+					// 	'container' => false,
+					// 	'menu_class' => '',
+					// 	'fallback_cb' => '__return_false',
+					// 	'items_wrap' => '<ul id="%1$s" class="navbar-nav me-auto mb-2 mb-md-0 %2$s">%3$s</ul>',
+					// 	'depth' => 2,
+					// 	'walker' => new bootstrap_5_wp_nav_menu_walker()
+					// ));
 					?>
 				</div>
 				<?php get_search_form(); ?>

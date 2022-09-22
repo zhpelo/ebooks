@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 if ( post_password_required() ) {
 	return;
@@ -48,7 +51,7 @@ if ( $comments ) {
 			wp_list_comments(
 				array(
 					// 'walker'      => new TwentyTwenty_Walker_Comment(),
-					'avatar_size' => 120,
+					'avatar_size' => 20,
 					'style'       => 'div',
 				)
 			);
@@ -111,7 +114,9 @@ if ( comments_open() || pings_open() ) {
 
 	<div class="comment-respond" id="respond">
 
-		<p class="comments-closed"><?php _e( 'Comments are closed.', 'twentytwenty' ); ?></p>
+		<p class="comments-closed">
+			<?php _e( 'Comments are closed.', 'ebooks' ); ?>
+		</p>
 
 	</div><!-- #respond -->
 

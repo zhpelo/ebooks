@@ -77,9 +77,7 @@ $chapters = ebooks_get_chapters(get_the_ID());
             <?php ebooks_related_posts(['limit' => 12]); ?>
         </div>
         <div class="col-md-3">
-            <div class="my-3 p-3 bg-burlywood rounded shadow-sm">
-                <?php get_sidebar(); ?>
-            </div>
+            <?php get_sidebar(); ?>
 
             <?php get_template_part( 'template-parts/social' ); ?>
             

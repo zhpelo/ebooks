@@ -58,8 +58,9 @@ get_header();
 ?>
     <div class="row">
         <div class="col-md-9">
+        <?php if (have_posts()) { ?>
             <div class="my-3 p-3 bg-burlywood rounded shadow-sm">
-                <?php if (have_posts()) {
+                <?php 
                     $i = 0;
                     while (have_posts()) {
                         $i++;
@@ -68,6 +69,7 @@ get_header();
                         }
                         the_post();
                 ?>
+               
                         <div class="row g-0 overflow-hidden flex-md-row mb-4 h-md-250">
                             <div class="col p-4 d-flex flex-column position-static">
                                 
@@ -82,16 +84,14 @@ get_header();
                                 <?php the_post_thumbnail('cover-sm'); ?>
                             </div>
                         </div>
-                <?php }
-                } ?>
+                <?php } ?>
             </div>
+        <?php } ?>
 
             <?php get_template_part( 'template-parts/pagination' ); ?>
         </div>
         <div class="col-md-3">
-            <div class="my-3 p-3 bg-burlywood rounded shadow-sm">
-                <?php get_sidebar(); ?>
-            </div>
+            <?php get_sidebar(); ?>
         </div>
     </div>    
 </main>

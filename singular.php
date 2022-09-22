@@ -78,9 +78,7 @@ $image_url = ! post_password_required() ? get_the_post_thumbnail_url( get_the_ID
 
         </div>
         <div class="col-md-4">
-            <div class="p-3 bg-burlywood rounded shadow-sm">
-                <?php get_sidebar(); ?>
-            </div>
+            <?php get_sidebar(); ?>
         </div>
 </main>
 

@@ -32,6 +32,11 @@ with others.
 }
 /* 自定义css */
 
+ul,li{
+	padding: 0;
+    margin: 0;
+    list-style: none;
+}
 .bg-olive {
 	color: #fff;
 	background-color: #5d6146;
@@ -93,10 +98,10 @@ ol, ul {
 .menu-item {
 	padding: 4px 10px;
 }
-.current-menu-item,.current-menu-parent {
+#main-menu .current-menu-item, #main-menu .current-menu-parent {
 	background-color: #5d6146;
 }
-.current-menu-item a {
+.current-menu-parent > a,.current-menu-item > a {
     color: #fff;
 }
 
@@ -366,9 +371,12 @@ a,
 	line-height: 3rem;
 
 }
-
-
-.wp-block-post-comments .comment-form-author label, .wp-block-post-comments .comment-form-comment label, .wp-block-post-comments .comment-form-email label, .wp-block-post-comments .comment-form-url label {
-    display: block;
-    margin-bottom: 0.25em;
+.comment-form-comment label{
+	display: block;
+}
+.comment-form-comment #comment{
+	width: 100%;
+}
+.comment{
+	padding-left: 40px;
 }

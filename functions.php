@@ -1,6 +1,8 @@
 <?php
 
 require get_template_directory() . "/inc/template-tag.php";
+// Custom page walker.
+require get_template_directory() . '/inc/classes/class-ebooks-walker-page.php';
 
 /**
  * Register and Enqueue Styles.
@@ -131,7 +133,7 @@ function custom_sidebar() {
 		'name'          => __("Default sidebar","ebooks"),
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'before_widget' => '<aside id="%1$s" class="my-3 p-3 bg-burlywood rounded shadow-s widget %2$s">',
 		'after_widget'  => '</aside>',
 	);
 	register_sidebar( $args );
